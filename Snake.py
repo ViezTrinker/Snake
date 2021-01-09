@@ -50,16 +50,16 @@ class futter():
         self.schlange=schlange
         while var:
             isInSnake=False
-            self.x=random.randint(0,width)
+            self.x=random.randint(0,width-15)
             self.x=self.x-self.x%vel
-            self.y=random.randint(0,height)
+            self.y=random.randint(0,height-15)
             self.y=self.y-self.y%vel
             
             for square in self.schlange:
                 if self.x==square.x and self.y==square.y:
                     isInSnake=True
             
-            if not(self.x>370 and self.y<10) and not(isInSnake):
+            if not(self.x>370 and self.y<35) and not(isInSnake):
                 var=False
         self.width=heightsquare
         self.height=widthsquare
@@ -148,7 +148,7 @@ def redrawGameWindow():
     pygame.draw.rect(win, (0,255,0), (essen.x, essen.y, essen.height, essen.width))
     
     # Punkte
-    text = font.render("Punkte: " + str(punkte), 1, (255, 0, 0))
+    text = font.render("Punkte: " + str(punkte), 1, (255, 255, 255))
     win.blit(text, (370, 10))
     
     pygame.display.update()
