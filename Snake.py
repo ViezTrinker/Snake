@@ -130,7 +130,7 @@ def gameover():
     pygame.mixer.music.stop() 
     gameovermusic.play()
     text = font.render("GAME OVER", 1, (255, 255, 255))
-    win.blit(text, (width/2-60, height/2-20))
+    win.blit(text, (width/2-65, height/2-20))
     pygame.display.update()
     pygame.time.delay(10000)
     global run
@@ -141,8 +141,11 @@ def redrawGameWindow():
     win = pygame.display.set_mode( (height, width))
     
     # Zeichne Schlange
-    for quadr in schlange:
-        pygame.draw.rect(win, (255,0,0), (quadr.x, quadr.y, quadr.height, quadr.width))
+    for i in range(len(schlange)):
+        if i==0:
+            pygame.draw.rect(win, (255,100,0), (schlange[i].x, schlange[i].y, schlange[i].height, schlange[i].width)) 
+        else:
+            pygame.draw.rect(win, (255,0,0), (schlange[i].x, schlange[i].y, schlange[i].height, schlange[i].width))
         
     # Zeichne Futter
     pygame.draw.rect(win, (0,255,0), (essen.x, essen.y, essen.height, essen.width))
